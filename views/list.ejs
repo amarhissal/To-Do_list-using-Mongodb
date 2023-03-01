@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>To-Do_List</title>
+</head>
+<body>
+    <div class="box" id="heading">
+    <h1> <%= listTitle %></h1>
+     </div>
+     <div class="box">
+        <% for(let i=0;i<getItems.length;i++){ %>
+            <div class="item">
+                <input type="checkbox" name="" class="check1" id="check1">
+                <p><%= getItems[i].name%></p>
+                <form class="check2" action="/delete" method="post">
+                    <input type="hidden" name="list" value="<%= listTitle %>">
+                <input type="checkbox" class="check2" name="delete" value="<%= getItems[i]._id%>" onChange="this.form.submit()">
+            </form>
+            </div>
+        
+        <%}%>
+        <form class='item' action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item">
+            <button class="button" type="submit" name="list" value= <%= listTitle %>>+</button>
+        </form>
+    
+</div>
+<div class="about">
+    <button class="but1"><a class="a2"href="http:/about">About</a></button>
+    
+      <% if(listTitle=='Work List'){ %>
+        <button class="but1"><a class="a2"href="http:/">Home</a></button>
+        <%} else { %>
+            <button class="but1"><a class="a2"href="http:/work">WorkList</a></button>
+        <% } %>
+
+</div>
+
+  <footer>@Amar Hissal</footer>
+     
+</body>
+</html> 
